@@ -1,8 +1,7 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, boolean } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("users", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 255 }).notNull(),
-  age: integer().notNull(),
-  email: varchar({ length: 255 }).notNull().unique(),
+export const todosTable = pgTable("todos", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  completed: boolean("completed").notNull().default(false),
 });
