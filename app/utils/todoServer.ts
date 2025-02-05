@@ -2,15 +2,7 @@ import { createServerFn } from "@tanstack/start";
 import { todosTable } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { drizzle } from "drizzle-orm/node-postgres";
-
-const db = drizzle(process.env.DATABASE_URL!);
-
-export type Todo = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { db } from "../db/drizzleConnect";
 
 export const getTodos = createServerFn({ method: "GET" }).handler(async () => {
   return db.select().from(todosTable);

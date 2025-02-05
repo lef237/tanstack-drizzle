@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getTodos, createTodo } from "../../utils/todoServer";
-import type { Todo } from "../../utils/todoServer";
 
 import { useRouter } from "@tanstack/react-router";
 
@@ -14,7 +13,7 @@ export const Route = createFileRoute("/todos/")({
 });
 
 function TodosIndex() {
-  const { todos } = Route.useLoaderData() as { todos: Todo[] };
+  const { todos } = Route.useLoaderData();
   const router = useRouter();
 
   async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
