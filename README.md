@@ -1,6 +1,25 @@
 # TanStack Drizzle
 
-Full-Stack TypeScript Framework
+**Full-Stack TypeScript Framework**
+
+次の技術スタックを使いたい方にオススメ！
+
+- React
+- TypeScript
+- TanStack Router
+  - Server Functions
+- Database
+  - PostgreSQL
+- Drizzle ORM
+- Zod
+
+## 主な特徴
+
+TanStack Startで使用できる**Server Functions**を使って、クライアントサイドからサーバーサイドの関数を呼び出すことができます。
+
+そのため、API Routesを利用しなくても、Databaseの操作が可能になります。
+
+ZodやDrizzle ORMを使っており、TypeScriptで統一されているため、型安全にコードを書くことができます。
 
 <details>
 
