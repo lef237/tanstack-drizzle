@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getTodos, createTodo } from "../../utils/todoServer";
+import { getTodos, createTodo } from "../../functions/todoServer";
 
 import { useRouter } from "@tanstack/react-router";
 

@@ -21,6 +21,7 @@ import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as TodosIndexImport } from './routes/todos/index'
 import { Route as PostsIndexImport } from './routes/posts.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
+import { Route as TodosIdImport } from './routes/todos/$id'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as LayoutLayout2Import } from './routes/_layout/_layout-2'
 import { Route as PostsPostIdDeepImport } from './routes/posts_.$postId.deep'
@@ -86,6 +87,12 @@ const UsersUserIdRoute = UsersUserIdImport.update({
   id: '/$userId',
   path: '/$userId',
   getParentRoute: () => UsersRoute,
+} as any)
+
+const TodosIdRoute = TodosIdImport.update({
+  id: '/todos/$id',
+  path: '/todos/$id',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PostsPostIdRoute = PostsPostIdImport.update({
@@ -176,6 +183,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof PostsPostIdImport
       parentRoute: typeof PostsImport
+    }
+    '/todos/$id': {
+      id: '/todos/$id'
+      path: '/todos/$id'
+      fullPath: '/todos/$id'
+      preLoaderRoute: typeof TodosIdImport
+      parentRoute: typeof rootRoute
     }
     '/users/$userId': {
       id: '/users/$userId'
@@ -288,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/redirect': typeof RedirectRoute
   '/users': typeof UsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
+  '/todos/$id': typeof TodosIdRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts/': typeof PostsIndexRoute
   '/todos': typeof TodosIndexRoute
@@ -303,6 +318,7 @@ export interface FileRoutesByTo {
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/todos/$id': typeof TodosIdRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts': typeof PostsIndexRoute
   '/todos': typeof TodosIndexRoute
@@ -322,6 +338,7 @@ export interface FileRoutesById {
   '/users': typeof UsersRouteWithChildren
   '/_layout/_layout-2': typeof LayoutLayout2RouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
+  '/todos/$id': typeof TodosIdRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/posts/': typeof PostsIndexRoute
   '/todos/': typeof TodosIndexRoute
@@ -341,6 +358,7 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/users'
     | '/posts/$postId'
+    | '/todos/$id'
     | '/users/$userId'
     | '/posts/'
     | '/todos'
@@ -355,6 +373,7 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/redirect'
     | '/posts/$postId'
+    | '/todos/$id'
     | '/users/$userId'
     | '/posts'
     | '/todos'
@@ -372,6 +391,7 @@ export interface FileRouteTypes {
     | '/users'
     | '/_layout/_layout-2'
     | '/posts/$postId'
+    | '/todos/$id'
     | '/users/$userId'
     | '/posts/'
     | '/todos/'
@@ -389,6 +409,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRouteWithChildren
   RedirectRoute: typeof RedirectRoute
   UsersRoute: typeof UsersRouteWithChildren
+  TodosIdRoute: typeof TodosIdRoute
   TodosIndexRoute: typeof TodosIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
@@ -400,6 +421,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRoute: PostsRouteWithChildren,
   RedirectRoute: RedirectRoute,
   UsersRoute: UsersRouteWithChildren,
+  TodosIdRoute: TodosIdRoute,
   TodosIndexRoute: TodosIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
@@ -420,6 +442,7 @@ export const routeTree = rootRoute
         "/posts",
         "/redirect",
         "/users",
+        "/todos/$id",
         "/todos/",
         "/posts_/$postId/deep"
       ]
@@ -464,6 +487,9 @@ export const routeTree = rootRoute
     "/posts/$postId": {
       "filePath": "posts.$postId.tsx",
       "parent": "/posts"
+    },
+    "/todos/$id": {
+      "filePath": "todos/$id.tsx"
     },
     "/users/$userId": {
       "filePath": "users.$userId.tsx",
