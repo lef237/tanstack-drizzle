@@ -1,8 +1,8 @@
 import { createServerFn } from "@tanstack/start";
-import { todosTable } from "../db/schema";
+import { todosTable } from "~/db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { db } from "../db/drizzleConnect";
+import { db } from "~/db/drizzleConnect";
 
 export const getTodos = createServerFn({ method: "GET" }).handler(async () => {
   return db.select().from(todosTable);

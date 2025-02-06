@@ -1,9 +1,5 @@
 import { createFileRoute, notFound, useRouter } from "@tanstack/react-router";
-import {
-  getTodoById,
-  updateTodo,
-  deleteTodo,
-} from "../../functions/todoServer";
+import { getTodoById, updateTodo, deleteTodo } from "~/functions/todoServer";
 
 export const Route = createFileRoute("/todos/$id")({
   loader: async ({ params: { id } }) => {
