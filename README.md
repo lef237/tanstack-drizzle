@@ -1,4 +1,20 @@
-# Welcome to TanStack.com!
+# TanStack Drizzle
+
+Full-Stack TypeScript Framework
+
+<details>
+
+以下のコードを実行したときに表示される README.md の内容です。
+
+```sh
+npx degit https://github.com/tanstack/router/examples/react/start-basic start-basic
+```
+
+- https://tanstack.com/start/latest/docs/framework/react/quick-start#impatient
+
+---
+
+## Welcome to TanStack.com!
 
 This site is built with TanStack Router!
 
@@ -70,3 +86,5 @@ pnpm dev
 
 > [!WARNING]
 > You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+
+</details>
