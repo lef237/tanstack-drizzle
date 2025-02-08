@@ -2,7 +2,7 @@
 
 **Full-Stack TypeScript Framework**
 
-次の技術スタックを使いたい方にオススメ！
+Recommended for those who want to use the following technology stack!
 
 - React
 - TypeScript
@@ -13,17 +13,51 @@
 - Drizzle ORM
 - Zod
 
-## 主な特徴
+## Main Features
 
-TanStack Startで使用できる**Server Functions**を使って、クライアントサイドからサーバーサイドの関数を呼び出すことができます。
+**Server Functions**, which are available in _TanStack Start_, can be used to invoke server-side functions from the client side.
 
-そのため、API Routesを利用しなくても、Databaseの操作が可能になります。
+Therefore, you can operate the database without using API Routes.
 
-ZodやDrizzle ORMを使っており、TypeScriptで統一されているため、型安全にコードを書くことができます。
+It uses Zod and Drizzle ORM, and is unified with TypeScript, so you can write code in a type-safe way.
 
-<details>
+## How to set up
 
-以下のコードを実行したときに表示される README.md の内容です。
+You can clone this repository and install the dependencies.
+
+```sh
+gh repo clone lef237/tanstack-drizzle
+cd tanstack-drizzle
+npm install
+```
+
+You must prepare a database beforehand. If you follow the documentation here, you can easily prepare it in Docker (Docker Desktop is required).
+
+- https://orm.drizzle.team/docs/guides/postgresql-local-setup
+
+Once you have created the database, you can now place the `.env` file in the root of your project.
+
+Below is Sample.
+
+```env
+DATABASE_URL=postgres://postgres:mypassword@localhost:5432/postgres
+```
+
+Next, use the Drizzle Kit to create the table in the database.
+
+```sh
+npx drizzle-kit push
+```
+
+Finally, run the following code to launch TanStack Drizzle!
+
+```sh
+npm run dev
+```
+
+<details><summary>Initial README.md</summary>
+
+This is the contents of README.md that will be displayed when you run the following code:
 
 ```sh
 npx degit https://github.com/tanstack/router/examples/react/start-basic start-basic
