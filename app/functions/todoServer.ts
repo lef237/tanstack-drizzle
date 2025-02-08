@@ -3,10 +3,13 @@ import { todosTable } from "~/db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "~/db/drizzleConnect";
+import { logMiddleware } from "~/utils/loggingMiddleware";
 
-export const getTodos = createServerFn({ method: "GET" }).handler(async () => {
-  return db.select().from(todosTable);
-});
+export const getTodos = createServerFn({ method: "GET" })
+  .middleware([logMiddleware])
+  .handler(async () => {
+    return db.select().from(todosTable);
+  });
 
 export const createTodo = createServerFn({ method: "POST" })
   .validator(z.object({ title: z.string().min(1) }))
