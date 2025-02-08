@@ -21,12 +21,17 @@ function TodosIndex() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const title = formData.get("title");
-    if (!title) return;
+
+    if (typeof title !== "string" || !title.trim()) {
+      alert("Title is required!");
+      return;
+    }
 
     try {
-      await createTodo({
-        data: { title: String(title) },
+      const result = await createTodo({
+        data: { title: title },
       });
+      console.log("Created!:", result);
       form.reset();
       router.invalidate();
     } catch (err) {
